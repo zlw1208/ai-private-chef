@@ -26,6 +26,35 @@ PostgreSQL。
 
 开发模式默认使用 SQLite；正式本地部署使用 PostgreSQL。
 
+## 项目结构
+
+```text
+AI私厨/
+├─ backend/
+│  ├─ app/
+│  │  ├─ agent/       # LangGraph、Qwen 与 Tavily 工作流
+│  │  ├─ api/         # FastAPI 接口
+│  │  ├─ core/        # 配置、日志与 checkpoint
+│  │  ├─ schemas/     # 请求和响应数据模型
+│  │  └─ services/    # OSS、后台等业务服务
+│  └─ tests/          # 自动化测试
+├─ frontend/
+│  ├─ index.html      # 用户对话页面
+│  ├─ admin.html      # 本机只读后台
+│  └─ assets/         # 当前页面使用的 CSS 与 JavaScript
+├─ scripts/           # Studio 和本地运行脚本
+├─ data/              # SQLite 本地数据（不提交到 Git）
+├─ Dockerfile
+├─ compose.yaml       # FastAPI + PostgreSQL 本地生产部署
+├─ langgraph.json     # LangSmith Studio 图配置
+├─ pyproject.toml     # Python 依赖与工具配置
+└─ README.md
+```
+
+根目录中的隐藏项也有明确用途：`.git` 保存版本历史，`.idea` 保存 PyCharm 项目设置，
+`.langgraph_api` 与 `.studio-runtime` 是 LangGraph Studio 的本地状态和隔离运行环境。
+`.env`、`.env.production` 保存本机配置和密钥，均不会提交到 Git，不应随意删除。
+
 ## 本地启动（Windows PowerShell）
 
 ```powershell
