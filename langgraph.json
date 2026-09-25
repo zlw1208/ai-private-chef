@@ -1,0 +1,8 @@
+{
+  "$schema": "https://langgra.ph/schema.json",
+  "dependencies": ["."],
+  "graphs": {
+    "ai-private-chef-recipe": "./backend/app/studio.py:recipe_graph"
+  },
+  "env": ".env"
+}

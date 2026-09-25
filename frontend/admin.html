@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>AI 私厨 · 本机后台</title>
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/assets/admin.css" />
+    <script src="/assets/admin.js" defer></script>
+  </head>
+  <body>
+    <header class="admin-header">
+      <a class="admin-brand" href="/">
+        <span>厨</span>
+        <div><strong>AI 私厨</strong><small>LOCAL ADMIN</small></div>
+      </a>
+      <div class="local-badge"><i></i> 仅限本机访问</div>
+    </header>
+
+    <main>
+      <section class="admin-hero">
+        <div>
+          <p>运行与会话数据</p>
+          <h1>本机后台</h1>
+          <span>只读查看 Agent 会话和 LangGraph checkpoint，不提供修改操作。</span>
+        </div>
+        <button id="refresh-button" type="button">刷新数据 ↻</button>
+      </section>
+
+      <section class="stats" aria-label="运行摘要">
+        <article><small>运行环境</small><strong id="environment">—</strong></article>
+        <article><small>存储后端</small><strong id="backend">—</strong></article>
+        <article><small>会话数量</small><strong id="thread-count">—</strong></article>
+        <article><small>Checkpoint</small><strong id="checkpoint-count">—</strong></article>
+      </section>
+
+      <section class="data-panel">
+        <div class="panel-heading">
+          <div><p>CONVERSATIONS</p><h2>最近会话</h2></div>
+          <label>
+            <span class="sr-only">搜索会话</span>
+            <input id="thread-search" type="search" placeholder="搜索 Thread ID" />
+          </label>
+        </div>
+        <div id="admin-error" class="admin-error" hidden></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>类型</th><th>Thread ID</th><th>状态记录</th><th>最后更新</th><th></th></tr></thead>
+            <tbody id="thread-table"></tbody>
+          </table>
+          <div id="empty-state" class="empty-state" hidden>暂无会话数据</div>
+        </div>
+      </section>
+
+      <section class="detail-panel" id="detail-panel" hidden>
+        <div class="panel-heading">
+          <div><p>LATEST STATE</p><h2>会话最新状态</h2></div>
+          <button id="close-detail" type="button" aria-label="关闭详情">×</button>
+        </div>
+        <dl id="detail-meta"></dl>
+        <pre id="detail-json"></pre>
+      </section>
+    </main>
+  </body>
+</html>

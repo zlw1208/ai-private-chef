@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="告诉 AI 私厨你有什么食材，马上获得合适的菜谱。" />
+    <title>AI 私厨</title>
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/assets/chat.css?v=1" />
+    <script src="/assets/chat.js?v=1" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="AI 私厨首页">
+        <span class="brand-mark" aria-hidden="true">厨</span>
+        <strong>AI 私厨</strong>
+      </a>
+      <nav>
+        <a href="/admin">本机后台</a>
+        <span class="service-status"><i></i> 服务在线</span>
+      </nav>
+    </header>
+
+    <main class="chat-shell">
+      <section class="empty-state" id="empty-state">
+        <div class="chef-mark" aria-hidden="true">⌁</div>
+        <p>AI PRIVATE CHEF</p>
+        <h1>今天想吃点什么？</h1>
+        <span>描述现有食材，或者直接发一张照片。</span>
+      </section>
+
+      <section class="conversation" id="conversation" aria-live="polite"></section>
+    </main>
+
+    <div class="composer-dock">
+      <form class="composer" id="composer">
+        <div class="attachment-preview" id="attachment-preview" hidden>
+          <img id="attachment-image" alt="准备发送的图片" />
+          <div><strong id="attachment-name"></strong><span>图片已就绪</span></div>
+          <button id="remove-attachment" type="button" aria-label="移除图片">×</button>
+        </div>
+
+        <div class="composer-row">
+          <label class="attach-button" for="image-input" title="添加图片">
+            <input id="image-input" type="file" accept="image/jpeg,image/png,image/webp" hidden />
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 5v14M5 12h14" />
+            </svg>
+          </label>
+          <textarea
+            id="message-input"
+            rows="1"
+            maxlength="2000"
+            placeholder="输入食材、口味，或添加一张图片…"
+            aria-label="给 AI 私厨发送消息"
+          ></textarea>
+          <button class="send-button" id="send-button" type="submit" aria-label="发送">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 19V5m0 0-6 6m6-6 6 6" />
+            </svg>
+          </button>
+        </div>
+        <div class="composer-foot">
+          <span id="composer-hint">支持 JPG、PNG、WEBP，最大 10 MB</span>
+          <span>Enter 发送 · Shift + Enter 换行</span>
+        </div>
+      </form>
+      <p class="disclaimer">AI 生成内容仅供烹饪参考，请根据食材状态与个人健康情况判断。</p>
+    </div>
+  </body>
+</html>

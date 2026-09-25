@@ -1,0 +1,10 @@
+.git
+.idea
+.venv
+__pycache__
+*.pyc
+.env
+.env.production
+data
+.pytest_cache
+.ruff_cache
