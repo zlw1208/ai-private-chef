@@ -1,15 +1,46 @@
-# AI Private Chef
+# AI Private Chef · AI 私厨
 
-AI 私厨是一个支持文字和图片输入的菜谱推荐 Agent。后端使用 FastAPI，Agent 使用
-LangChain/LangGraph 编排；开发环境使用 SQLite checkpoint，正式本地部署切换为
-PostgreSQL。
+> 一个支持文字与图片输入、工具决策、流式输出和多轮记忆的多模态菜谱 Agent。
 
-## 界面演示
+![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.115%2B-009688?logo=fastapi&logoColor=white)
+![LangGraph](https://img.shields.io/badge/LangGraph-Agent-225f49)
+![Qwen](https://img.shields.io/badge/Qwen-Multimodal-6f42c1)
+![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white)
 
-![AI 私厨对话与流式菜谱生成演示](docs/demo/ai-private-chef-demo.gif)
+![AI 私厨产品总览](docs/demo/product-overview.png)
 
-演示展示了从输入食材、理解需求到逐步生成菜谱的完整交互。图片识别时流程相同，
-只是会先经过 OSS 上传与 Qwen 多模态食材识别；模型输出会随实际输入变化。
+AI 私厨使用 FastAPI 提供统一的文字/图片对话入口，以 LangGraph 编排 Qwen 多模态识别、
+工具决策、Tavily 搜索和菜谱生成；开发环境使用 SQLite checkpoint，正式本地部署切换为
+PostgreSQL，并通过 LangSmith 查看节点、工具调用原因、耗时和异常。
+
+## 演示视频与交互效果
+
+[![点击播放 AI 私厨演示视频](docs/demo/ai-private-chef-demo.gif)](docs/demo/ai-private-chef-demo.webm)
+
+**[▶ 点击播放约 20 秒 WebM 演示视频](docs/demo/ai-private-chef-demo.webm)**
+
+视频使用示例数据，展示图片输入、食材识别、LangGraph 工具决策、流式菜谱输出与运行架构；
+不包含真实用户输入、API Key 或生产数据。模型实际输出会随输入变化。
+
+## 项目亮点
+
+| 能力 | 实现 |
+| --- | --- |
+| 多模态食材识别 | 图片经 OSS 预签名直传，Qwen 输出 Pydantic 结构化食材列表 |
+| 智能工具路由 | LangGraph 判断是否需要最新资料或外部来源，仅在必要时调用 Tavily |
+| 真正的流式体验 | `/api/chat/stream` 使用 NDJSON 返回进度、工具选择和模型 token |
+| 多轮会话记忆 | 使用 `thread_id` 隔离用户状态，SQLite/PostgreSQL checkpoint 持久化 |
+| 可观测与解释 | LangSmith 展示节点轨迹、工具调用原因、输入输出、耗时和错误 |
+| 本地生产部署 | Docker Compose 编排 FastAPI 与 PostgreSQL，后台仅绑定本机访问 |
+
+## Agent 架构
+
+![AI 私厨 Agent 工作流与数据链路](docs/demo/architecture.png)
+
+## 可观测性与会话数据
+
+![LangSmith、Checkpoint 与本机后台展示](docs/demo/observability.png)
 
 ## 当前进度
 
