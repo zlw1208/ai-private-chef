@@ -18,8 +18,6 @@ PostgreSQL，并通过 LangSmith 查看节点、工具调用原因、耗时和�
 
 [![点击播放 AI 私厨演示视频](docs/demo/ai-private-chef-demo.gif)](docs/demo/ai-private-chef-demo.webm)
 
-**[▶ 点击播放约 20 秒 WebM 演示视频](docs/demo/ai-private-chef-demo.webm)**
-
 视频使用示例数据，展示图片输入、食材识别、LangGraph 工具决策、流式菜谱输出与运行架构；
 不包含真实用户输入、API Key 或生产数据。模型实际输出会随输入变化。
 
