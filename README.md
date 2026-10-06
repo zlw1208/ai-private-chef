@@ -4,6 +4,13 @@ AI 私厨是一个支持文字和图片输入的菜谱推荐 Agent。后端使�
 LangChain/LangGraph 编排；开发环境使用 SQLite checkpoint，正式本地部署切换为
 PostgreSQL。
 
+## 界面演示
+
+![AI 私厨对话与流式菜谱生成演示](docs/demo/ai-private-chef-demo.gif)
+
+演示展示了从输入食材、理解需求到逐步生成菜谱的完整交互。图片识别时流程相同，
+只是会先经过 OSS 上传与 Qwen 多模态食材识别；模型输出会随实际输入变化。
+
 ## 当前进度
 
 当前已经提供：
